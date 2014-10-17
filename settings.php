@@ -26,7 +26,8 @@
 
 OC_Util::checkAdminUser();
 
-$params = array('uid_list', 'pwauth_path');
+//$params = array('uid_list', 'pwauth_path');
+$params = array('pwauth_path');
 
 if ($_POST) {
 	// CSRF check
@@ -39,11 +40,9 @@ if ($_POST) {
 	}
 }
 
-OCP\Util::addStyle('user_pwauth', 'settings');
-
 // fill template
 $tmpl = new OC_Template( 'user_pwauth', 'settings');
-$tmpl->assign( 'uid_list', OC_Appconfig::getValue('user_pwauth', 'uid_list', OC_USER_BACKEND_PWAUTH_UID_LIST));
+//$tmpl->assign( 'uid_list', OC_Appconfig::getValue('user_pwauth', 'uid_list', OC_USER_BACKEND_PWAUTH_UID_LIST));
 $tmpl->assign( 'pwauth_path', OC_Appconfig::getValue('user_pwauth', 'pwauth_path', OC_USER_BACKEND_PWAUTH_PATH));
 
 return $tmpl->fetchPage();
